@@ -1,0 +1,33 @@
+<div class='card'>
+  <div class='card-body'>
+    <h5 class='card-title'>URL Shortener</h5>
+    <%= form_for @link do |f| %>
+      <div class='form-group'>
+        <%= f.text_field :url, placeholder: 'URL', class: "form-control #{'is-invalid' if @link.errors.any?}" %>
+        
+        <% if @link.errors.any? %>
+         
+          <div class='invalid-feedback'>               
+            <%= @link.errors.full_messages.join('; ') %>
+          </div>
+        
+        <% end %>
+        
+      </div>
+      <%= f.submit "Shorten!", class: 'btn btn-primary float-right'%>
+    <% end %>
+  </div>
+</div>
+
+
+<% if @result %>
+<br/>
+<div class='card'>
+  <div class='card-body'>
+  <div class='card-text'>
+    Your new short link: <%= click_url(token: @result.token.upcase) %>
+  </div>
+  <%= link_to "Visit", click_url(token: @result.token), class: 'btn btn-primary float-right' %>
+  </div>
+</div>
+<% end %>

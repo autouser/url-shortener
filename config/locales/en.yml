@@ -1,0 +1,7 @@
+en:
+  hello: "Hello world"
+en:
+  activerecord:
+    attributes:
+      link:
+        url: "URL"
